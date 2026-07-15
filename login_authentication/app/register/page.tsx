@@ -1,6 +1,6 @@
 "use client";
 
-import { UserPlus } from "lucide-react";
+import { UserPlus, User, Mail, Phone, MapPinHouse, LockKeyhole  } from "lucide-react";
 
 export default function Register(){
     const handleRegister = (e: React.FormEvent<HTMLFormElement>) => {
@@ -16,33 +16,82 @@ export default function Register(){
                       <div className="grid grid-cols-2 gap-4 mb-4">
                         <div className="col-span-1 flex flex-col justify-center">
                            <label className="tracking-[3px] text-[13px] mb-3 uppercase"> User name</label> 
-                           <input type="text" className="outline outline-1 outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-black-300 p-2 rounded-md " placeholder="Your Username" />
+                           <div className="flex flex-row outline outline-1 outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-black-300 p-2 rounded-md">
+                            <User/>
+                            <input 
+                                type="text"
+                                placeholder="Your Username"
+                                className="ml-2 border-none outline-none"
+                                  />
+                           </div>
+                           
                         </div>
                         <div className="col-span-1 flex flex-col justify-center">
                             <label className="tracking-[3px] text-[13px] mb-3 uppercase"> Email</label> 
-                            <input type="email" className="outline outline-1 outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-black-300 p-2 rounded-md " placeholder="Email" />
+                             <div className="flex flex-row outline outline-1 outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-black-300 p-2 rounded-md ">
+                                <Mail/>
+                                <input 
+                                    type="email" 
+                                    placeholder="Email"
+                                    className="ml-2 border-none outline-none"
+                                    />
+
+                             </div>
+                            
                         </div>
                     </div>  
 
                     <div className="grid grid-cols-2 gap-4 mb-4">
                         <div className="col-span-1 flex flex-col justify-center">
                            <label className="tracking-[3px] text-[13px] mb-3 uppercase"> No. Phone</label> 
-                           <input type="text" className="outline outline-1 outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-black-300 p-2 rounded-md " placeholder="Your Number Phone" />
+                           <div className="flex flex-row outline outline-1 outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-black-300 p-2 rounded-md" >
+                                <Phone/>
+                                <input 
+                                type="text" 
+                                placeholder="Your Number Phone" 
+                                className="ml-2 border-none outline-none"
+                                />
+                           </div>
+                           
                         </div>
                         <div className="col-span-1 flex flex-col justify-center">
                             <label className="tracking-[3px] text-[13px] mb-3 uppercase"> State</label> 
-                            <input type="email" className="outline outline-1 outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-black-300 p-2 rounded-md " placeholder="State" />
+                            <div  className="flex flex-row outline outline-1 outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-black-300 p-2 rounded-md ">
+                                <MapPinHouse/>
+                               <input 
+                                type="email" 
+                                placeholder="State" 
+                                className="ml-2 border-none outline-none"
+                                /> 
+                            </div>
+                            
                         </div>
                     </div> 
 
                     <div className="grid grid-cols-2 gap-4 mb-4">
                         <div className="col-span-1 flex flex-col justify-center">
                            <label className="tracking-[3px] text-[13px] mb-3 uppercase"> Password</label> 
-                           <input type="text" className="outline outline-1 outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-black-300 p-2 rounded-md " placeholder="Your Password" />
+                           <div className="flex flex-row outline outline-1 outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-black-300 p-2 rounded-md ">
+                                <LockKeyhole/>
+                                <input 
+                                    type="text"  
+                                    placeholder="Your Password" 
+                                    className="ml-2 border-none outline-none"
+                                    />
+                           </div>
+                           
                         </div>
                         <div className="col-span-1 flex flex-col justify-center">
                             <label className="tracking-[3px] text-[13px] mb-3 uppercase"> Confirm Password</label> 
-                            <input type="email" className="outline outline-1 outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-black-300 p-2 rounded-md " placeholder="Confirm Password" />
+                            <div className=" flex flex-row outline outline-1 outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-black-300 p-2 rounded-md ">
+                                <LockKeyhole/>
+                                <input 
+                                    type="email"  
+                                    placeholder="Confirm Password" 
+                                    className="ml-2 border-none outline-none"
+                                    />
+                            </div>
+                            
                         </div>
                     </div> 
 

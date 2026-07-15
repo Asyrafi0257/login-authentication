@@ -1,6 +1,6 @@
 "use client";
 
-import { SquareArrowRightEnter } from 'lucide-react';
+import { SquareArrowRightEnter, User, LockKeyhole } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import Link from "next/link";
 
@@ -17,16 +17,24 @@ export default function Login() {
                     <form onSubmit={handleSubmit} className="h-[350px] w-[350px] mt-5 flex flex-col">
                         {/* username */}
                         <label className="tracking-[3px] font-medium"> Username</label>
-                        <input 
+                        <div className="mt-2 flex flex-row outline outline-1 outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-gray-400 rounded-md p-2 tracking-[2px]">
+                            <User className=''/>
+                           <input 
                             type="text" placeholder="username" 
-                            className="mt-2 outline outline-1 outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-gray-400 rounded-md p-2 tracking-[2px]"
-                            />
+                           className='ml-2 w-full h-full border-none outline-none'
+                            /> 
+                        </div>
+                        
                         {/* Password */}
                         <label className="tracking-[3px] font-medium mt-5"> Password</label>
-                        <input 
+                        <div className="mt-2 flex flex-row outline outline-1 outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-gray-400 rounded-md p-2 tracking-[2px]">
+                            <LockKeyhole/>
+                            <input 
                             type="password" placeholder="password" 
-                            className="mt-2 outline outline-1 outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-gray-400 rounded-md p-2 tracking-[2px]"
+                            className='ml-3 h-full w-full outline-none border-none'
                             />
+                        </div>
+                        
                         <div className='w-full flex justify-center mt-3'>
                             <button type='submit' className="bg-blue-700 mt-5 w-32 h-[40px] rounded-md flex flex-row justify-center items-center text-white cursor-pointer gap-2">
                             <SquareArrowRightEnter/>
