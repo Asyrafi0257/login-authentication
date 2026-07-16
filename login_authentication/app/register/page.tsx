@@ -1,10 +1,63 @@
 "use client";
 
-import { UserPlus, User, Mail, Phone, MapPinHouse, LockKeyhole  } from "lucide-react";
+import { UserPlus, User, Mail, Phone, MapPinHouse, LockKeyhole  } from "lucide-react"
+import { useState } from "react";
 
 export default function Register(){
-    const handleRegister = (e: React.FormEvent<HTMLFormElement>) => {
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [phone, setPhone] = useState("");
+    const [state, setState] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+
+    const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+
+        if(password !== confirmPassword){
+           alert("Password and confirm password not match"); 
+           return;
+        }
+        
+        if(password.length < 8){
+            alert("Password at least 8 length!");
+            return;
+        }
+        
+        try{
+            const dataUser = await fetch("/api/register", {
+                method: "POST",
+                headers:{
+                    "Content-Type": "application/json",
+                },
+                body:JSON.stringify({
+                    name,
+                    email,
+                    phone,
+                    state,
+                    password
+                })
+            })
+
+            const data = await dataUser.json();
+
+            if(!data) return "Register failed"
+
+            
+                setName("");
+                setEmail("");
+                setPhone("");
+                setState("");
+                setPassword("");
+                setConfirmPassword("");
+
+                return alert("Register successfully"); 
+            
+        }catch(error){
+            alert("server problem, Please try again!");
+        }
+
+
     }
     return (
         <div className="flex flex-row justify-center items-center min-h-screen">
@@ -22,6 +75,8 @@ export default function Register(){
                                 type="text"
                                 placeholder="Your Username"
                                 className="ml-2 border-none outline-none"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
                                   />
                            </div>
                            
@@ -34,6 +89,8 @@ export default function Register(){
                                     type="email" 
                                     placeholder="Email"
                                     className="ml-2 border-none outline-none"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
                                     />
 
                              </div>
@@ -50,6 +107,8 @@ export default function Register(){
                                 type="text" 
                                 placeholder="Your Number Phone" 
                                 className="ml-2 border-none outline-none"
+                                value={phone}
+                                onChange={(e) => setPhone(e.target.value)}
                                 />
                            </div>
                            
@@ -59,9 +118,11 @@ export default function Register(){
                             <div  className="flex flex-row outline outline-1 outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-black-300 p-2 rounded-md ">
                                 <MapPinHouse/>
                                <input 
-                                type="email" 
+                                type="text" 
                                 placeholder="State" 
                                 className="ml-2 border-none outline-none"
+                                value={state}
+                                onChange={(e) => setState(e.target.value)}
                                 /> 
                             </div>
                             
@@ -74,9 +135,11 @@ export default function Register(){
                            <div className="flex flex-row outline outline-1 outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-black-300 p-2 rounded-md ">
                                 <LockKeyhole/>
                                 <input 
-                                    type="text"  
+                                    type="password"  
                                     placeholder="Your Password" 
                                     className="ml-2 border-none outline-none"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
                                     />
                            </div>
                            
@@ -86,9 +149,11 @@ export default function Register(){
                             <div className=" flex flex-row outline outline-1 outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-black-300 p-2 rounded-md ">
                                 <LockKeyhole/>
                                 <input 
-                                    type="email"  
+                                    type="password"  
                                     placeholder="Confirm Password" 
                                     className="ml-2 border-none outline-none"
+                                    value={confirmPassword}
+                                    onChange={(e) => setConfirmPassword(e.target.value)}
                                     />
                             </div>
                             

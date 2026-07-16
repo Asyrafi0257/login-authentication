@@ -3,7 +3,7 @@ import { PrismaPg } from "@prisma/adapter-pg"; // kita import satu driver untuk 
 
 const connectionString = process.env.DATABASE_URL; //kita buat connection 
 
-//check jika ada tak connection tu
+//check ada tak connection tu, kalo tak ada connection ia akan display seperti dibawah
 if (!connectionString) {
   throw new Error("DATABASE_URL tidak dijumpai dalam file .env");
 }
@@ -18,7 +18,7 @@ const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined;
 };
 
-// dekat operator ?? bermaksud if ada nilai disebelah kiri then guna nilai tu then if takde nilai, ia akan create nilai baru guna sebelah kanan
+// dekat operator "??"" bermaksud if ada nilai disebelah kiri then guna nilai tu then if takde nilai, ia akan create nilai baru guna sebelah kanan
 export const prisma =
   globalForPrisma.prisma ??
   new PrismaClient({adapter,});
