@@ -103,7 +103,7 @@ export async function POST(request: NextRequest) {
         );
 
     } catch(error){
-        console.error("Register erro:", error);
+        console.error("Register error:", error);
 
         return NextResponse.json(
             {

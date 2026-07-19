@@ -14,13 +14,16 @@ export default function Register(){
     const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         
+        //check if semua fill tak diisi then kena display error
         if(!name || !email || !phone || !state || !password || !confirmPassword) return alert("Please fill all fields!");
         
+        //check if password tak sama dengan confirm password
         if(password !== confirmPassword){
            alert("Password and confirm password not match"); 
            return;
         }
         
+        //check if panjang password tak lebih daripada 8 character then dia akan display error
         if(password.length < 8){
             alert("Password at least 8 length!");
             return;
