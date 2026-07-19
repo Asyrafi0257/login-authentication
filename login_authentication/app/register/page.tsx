@@ -13,7 +13,9 @@ export default function Register(){
 
     const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-
+        
+        if(!name || !email || !phone || !state || !password || !confirmPassword) return alert("Please fill all fields!");
+        
         if(password !== confirmPassword){
            alert("Password and confirm password not match"); 
            return;
@@ -23,6 +25,8 @@ export default function Register(){
             alert("Password at least 8 length!");
             return;
         }
+        
+        
         
         try{
             const dataUser = await fetch("/api/register", {
@@ -41,7 +45,10 @@ export default function Register(){
 
             const data = await dataUser.json();
 
-            if(!data) return "Register failed"
+            if(!dataUser.ok){
+                alert(data.message);
+                return;
+            }
 
             
                 setName("");
@@ -161,7 +168,7 @@ export default function Register(){
                     </div> 
 
                     <div className="flex flex-row justify-end w-full mt-10">
-                        <button className="bg-blue-600 w-[100px] h-[40px] rounded-lg text-white flex flex-row items-center justify-center cursor-pointer p-2">
+                        <button className="bg-blue-600 w-full h-[40px] rounded-lg text-white flex flex-row items-center justify-center cursor-pointer p-2">
                             <UserPlus size={20} className="mr-1"/>
                             Register
                         </button>
